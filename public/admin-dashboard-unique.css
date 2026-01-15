@@ -1,0 +1,65 @@
+.dash-body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.dash-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.dash-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 40px;
+}
+
+.dash-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.dash-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 25px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.dash-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.dash-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+    color: #ff4081;
+}
+
+.dash-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.dash-card p {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.dash-card.total { border-top: 4px solid #3498db; }
+.dash-card.pending { border-top: 4px solid #f1c40f; }
+.dash-card.approved { border-top: 4px solid #2ecc71; }
+.dash-card.blocked { border-top: 4px solid #e74c3c; }
+.dash-card.paid { border-top: 4px solid #9b59b6; }
+.dash-card.new { border-top: 4px solid #1abc9c; }

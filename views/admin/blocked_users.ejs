@@ -1,0 +1,61 @@
+<%- include("navbar.ejs") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Blocked Members | Matrimony Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<!-- PAGE-SPECIFIC CSS -->
+<link rel="stylesheet" href="/css/blocked-users-unique.css">
+</head>
+
+<body class="mt-blocked-body">
+
+<div class="admin-content">
+
+    <h1 class="mt-blocked-heading">🚫 Blocked Members</h1>
+
+    <div class="mt-blocked-card">
+        <table class="mt-blocked-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% users.filter(u => u.profile_status==='Blocked').forEach((u,i)=>{ %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= u.full_name %></td>
+                    <td><%= u.email %></td>
+                    <td><%= u.mobile %></td>
+                    <td>
+                        <span class="mt-blocked-badge">Blocked</span>
+                    </td>
+                    <td>
+                        <form action="/admin/unblock_user/<%= u.member_id %>" method="post" style="display:inline;">
+                            <button type="submit" class="mt-blocked-btn">
+                                <i class="fa fa-unlock"></i> Unblock
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

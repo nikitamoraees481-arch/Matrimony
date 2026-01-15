@@ -1,0 +1,231 @@
+<%- include("navbar.ejs") %>
+
+<!-- HERO SLIDER -->
+<section class="hero-slider">
+    <div class="hero-overlay">
+        <h1>Find Your Perfect Match ❤️</h1>
+        <p>India’s Most Trusted Matrimony Platform</p>
+        <a href="/register" class="btn-primary">Get Started</a>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stat-box">
+        <h2>💖 1M+</h2>
+        <p>Happy Couples</p>
+    </div>
+    <div class="stat-box">
+        <h2>🔐 100%</h2>
+        <p>Verified Profiles</p>
+    </div>
+    <div class="stat-box">
+        <h2>🌍 500+</h2>
+        <p>Cities Covered</p>
+    </div>
+    <div class="stat-box">
+        <h2>⭐ 10+</h2>
+        <p>Years of Trust</p>
+    </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us">
+    <div class="why-container">
+
+        <div class="why-text">
+            <h2>Why Choose <span>MyMatrimony</span> 💍</h2>
+            <p>
+                We bring together hearts with a perfect blend of 
+                <strong>trust</strong>, <strong>tradition</strong>, and 
+                <strong>modern technology</strong>. Our secure platform and
+                intelligent matchmaking help you find a meaningful
+                relationship that lasts forever.
+            </p>
+
+            <div class="why-points">
+                <div class="point">
+                    <i class="fas fa-user-check"></i>
+                    <span>100% Verified Profiles</span>
+                </div>
+                <div class="point">
+                    <i class="fas fa-heart"></i>
+                    <span>Smart Matchmaking</span>
+                </div>
+                <div class="point">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Privacy & Security</span>
+                </div>
+            </div>
+
+            <a href="/about_us" class="btn-secondary">Know More</a>
+        </div>
+
+        <div class="why-img">
+            <img src="https://themewagon.github.io/mr-mrs/img/gallery-3.jpg" alt="Happy Couple">
+        </div>
+
+    </div>
+</section>
+
+<h2 class="section-title">Recently Approved Users</h2>
+
+<div class="profiles-grid">
+    <% if (profiles && profiles.length > 0) { %>
+        <% profiles.forEach(function(user){ %>
+            <div class="profile-card">
+                <div class="profile-info">
+                    <h3><%= user.full_name %></h3>
+                    <p><strong>Gender:</strong> <%= user.gender %></p>
+                    <a href="/profile/<%= user.member_id %>" class="btn-view">View Profile</a>
+                </div>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p class="no-profiles">No approved users yet.</p>
+    <% } %>
+</div>
+
+
+
+
+
+<!-- FEATURED PROFILES -->
+<section class="aesthetic-profiles">
+    <h2 class="section-title">Featured Profiles</h2>
+    <p class="section-sub">Carefully selected profiles just for you</p>
+    
+
+    <div class="profile-grid">
+        <div class="profile-box">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg">
+            <h3>Rahul Sharma</h3>
+            <p>28 yrs • Software Engineer</p>
+            <span class="city">Bengaluru</span>
+            <a href="#">View Profile</a>
+        </div>
+
+        
+        
+        <div class="profile-box">
+            <img src="https://randomuser.me/api/portraits/men/45.jpg">
+            <h3>Amit Verma</h3>
+            <p>30 yrs • Businessman</p>
+            <span class="city">Delhi</span>
+            <a href="#">View Profile</a>
+        </div>
+
+        <div class="profile-box">
+            <img src="https://randomuser.me/api/portraits/men/65.jpg">
+            <h3>Suresh Patil</h3>
+            <p>27 yrs • Doctor</p>
+            <span class="city">Pune</span>
+            <a href="#">View Profile</a>
+        </div>
+    </div>
+</section>
+
+<!-- PREMIUM MATCHES -->
+<section class="premium-section">
+    <h2 class="section-title">Premium Matches</h2>
+    <p class="section-sub">Exclusive connections curated for you</p>
+
+    <div class="premium-grid">
+        <div class="premium-box">
+            <div class="tag">Premium</div>
+            <img src="https://randomuser.me/api/portraits/men/12.jpg">
+            <h3>Vikram Joshi</h3>
+            <p>29 • MBA</p>
+            <span>Mumbai</span>
+            <button>Connect</button>
+        </div>
+
+        <div class="premium-box highlight">
+            <div class="tag">Top Match</div>
+            <img src="https://randomuser.me/api/portraits/men/22.jpg">
+            <h3>Arjun Mehta</h3>
+            <p>31 • Architect</p>
+            <span>Ahmedabad</span>
+            <button>Connect</button>
+        </div>
+
+        <div class="premium-box">
+            <div class="tag verified">Verified</div>
+            <img src="https://randomuser.me/api/portraits/men/41.jpg">
+            <h3>Rohit Kulkarni</h3>
+            <p>27 • Engineer</p>
+            <span>Pune</span>
+            <button>View Profile</button>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 2rem 0 1rem;
+    color: #333;
+}
+
+.profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.profile-card {
+    background: #fdfdfd;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.profile-info h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #222;
+}
+
+.profile-info p {
+    margin: 0.4rem 0;
+    font-size: 1.05rem;
+    color: #555;
+}
+
+.btn-view {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.4rem;
+    background: #ff5a5f;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.btn-view:hover {
+    background: #e14d50;
+}
+
+.no-profiles {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #777;
+    margin-top: 2rem;
+}
+</style>
+
+
+<%- include("footer.ejs") %>

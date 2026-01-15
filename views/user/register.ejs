@@ -1,0 +1,59 @@
+<%- include("navbar.ejs") %>
+
+<section class="register-wrapper">
+
+    <!-- Image Section -->
+    <div class="register-image">
+        <img src="https://themewagon.github.io/mr-mrs/img/story-1.jpg" style="height: 400px;"
+             alt="Matrimony Couple">
+             
+        <div class="image-overlay">
+            <h2>Find Your Perfect Life Partner 💍</h2>
+            <p>Trusted | Secure | Verified Profiles</p>
+        </div>
+    </div>
+
+    <!-- Form Card -->
+   <!-- Form Card -->
+<div class="register-form">
+    <h2>Create Your Profile 💖</h2>
+
+    <form action="/admin/add_user" method="post">
+
+        <h3>👤 Basic Details</h3>
+        <div class="form-grid">
+            <input type="text" name="full_name" placeholder="Full Name" required>
+
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <input type="date" name="date_of_birth" required>
+            <input type="text" name="religion_caste" placeholder="Religion / Caste">
+            <input type="text" name="mother_tongue" placeholder="Mother Tongue">
+        </div>
+
+        <h3>📞 Contact Details</h3>
+        <div class="form-grid">
+            <input type="email" name="email" placeholder="Email Address">
+            <input type="tel" name="mobile" placeholder="Mobile Number">
+        </div>
+
+        <h3>🔐 Account Details</h3>
+        <div class="form-grid">
+            <input type="text" name="username" placeholder="Username">
+
+            <div class="password-box">
+                <input type="password" name="password" id="password" placeholder="Password">
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            </div>
+        </div>
+
+        <button type="submit">Register & Find Matches</button>
+    </form>
+</div>
+
+
+</section>

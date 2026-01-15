@@ -1,0 +1,206 @@
+<%- include("navbar.ejs") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>User Management | Matrimony Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<!-- ISOLATED CSS -->
+<link rel="stylesheet" href="/css/matrimony-users-unique.css">
+</head>
+
+<body class="mt-unique-body">
+
+<div class="admin-content">
+
+    <h1 class="mt-unique-heading">💍 Matrimony User Management</h1>
+
+    <!-- TOTAL USERS -->
+    <div class="mt-unique-card">
+        <h2>📊 Total Users</h2>
+        <table class="mt-unique-table table-bordered">
+            <thead>
+                <tr style="  background:linear-gradient(135deg,#ec4899,#8b5cf6);">
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% users.forEach((u,i)=>{ %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= u.full_name %></td>
+                    <td><%= u.email %></td>
+                    <td>
+                        <span class="mt-unique-badge mt-unique-<%= u.profile_status.toLowerCase() %>">
+                            <%= u.profile_status %>
+                        </span>
+                    </td>
+                    <td>
+                        <a class="mt-unique-btn" href="/admin/view_user/<%= u.member_id %>">
+                            <i class="fa fa-eye"></i> View
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PENDING USERS -->
+    <div class="mt-unique-card" style="margin-top: 10%;">
+        <h2>⏳ Pending Users</h2>
+        <table class="mt-unique-table">
+            <thead>
+                <tr style="  background:linear-gradient(135deg,#ec4899,#8b5cf6);">
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% users.filter(u => u.profile_status==='Pending').forEach((u,i)=>{ %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= u.full_name %></td>
+                    <td><%= u.email %></td>
+                    <td>
+                        <span class="mt-unique-badge mt-unique-pending">Pending</span>
+                    </td>
+                    <td>
+                        <a class="mt-unique-btn" href="/admin/view_user/<%= u.member_id %>">
+                            <i class="fa fa-eye"></i> View
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- APPROVED USERS -->
+    <div class="mt-unique-card" style="margin-top: 10%;">
+        <h2>✅ Approved Users</h2>
+        <table class="mt-unique-table">
+            <thead>
+                <tr style="  background:linear-gradient(135deg,#ec4899,#8b5cf6);">
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% users.filter(u => u.profile_status==='Approved').forEach((u,i)=>{ %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= u.full_name %></td>
+                    <td><%= u.email %></td>
+                    <td>
+                        <span class="mt-unique-badge mt-unique-approved">Approved</span>
+                    </td>
+                    <td>
+                        <a class="mt-unique-btn" href="/admin/view_user/<%= u.member_id %>">
+                            <i class="fa fa-eye"></i> View
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<style>
+
+/* TABLE */
+.mt-unique-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #4f46e5; /* OUTER BOLD BORDER */
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+/* TABLE HEADER */
+.mt-unique-table thead th {
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-right: 2px solid rgba(255,255,255,0.35); /* BOLD HEADER DIVIDER */
+}
+
+.mt-unique-table thead th:last-child {
+    border-right: none;
+}
+
+/* TABLE BODY CELLS */
+.mt-unique-table tbody td {
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #111827;
+    border-right: 2px solid #e5e7eb;   /* VERTICAL BOLD BORDER */
+    border-bottom: 2px solid #e5e7eb;  /* HORIZONTAL BOLD BORDER */
+}
+
+/* REMOVE EXTRA BORDER */
+.mt-unique-table tbody td:last-child {
+    border-right: none;
+}
+
+.mt-unique-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ROW HOVER */
+.mt-unique-table tbody tr:hover {
+    background: #fdf2f8;
+    transition: 0.2s ease;
+}
+
+/* CARD BORDER STRONG */
+.mt-unique-card {
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.1);
+}
+
+/* BUTTON */
+.mt-unique-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: linear-gradient(135deg,#ec4899,#8b5cf6);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.mt-unique-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+</style>
+</body>
+</html>

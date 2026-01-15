@@ -1,0 +1,244 @@
+<%- include("navbar.ejs") %>
+
+<div class="mx-dashboard">
+
+    <h1 class="mx-title">👰 Matrimony Admin Dashboard</h1>
+
+    <div class="mx-cards">
+
+        <div class="mx-card mx-total">
+            <div class="mx-card-icon"><i class="fa fa-users"></i></div>
+            <div class="mx-card-content">
+                <h3>Total Users</h3>
+                <p><%= totalUsers %></p>
+            </div>
+        </div>
+
+        <div class="mx-card mx-pending">
+            <div class="mx-card-icon"><i class="fa fa-hourglass-half"></i></div>
+            <div class="mx-card-content">
+                <h3>Pending Profiles</h3>
+                <p><%= pendingUsers %></p>
+            </div>
+        </div>
+
+        <div class="mx-card mx-approved">
+            <div class="mx-card-icon"><i class="fa fa-check-circle"></i></div>
+            <div class="mx-card-content">
+                <h3>Approved Profiles</h3>
+                <p><%= approvedUsers %></p>
+            </div>
+        </div>
+
+        <div class="mx-card mx-blocked">
+            <div class="mx-card-icon"><i class="fa fa-ban"></i></div>
+            <div class="mx-card-content">
+                <h3>Blocked Users</h3>
+                <p><%= blockedUsers %></p>
+            </div>
+        </div>
+
+        <div class="mx-card mx-paid">
+            <div class="mx-card-icon"><i class="fa fa-credit-card"></i></div>
+            <div class="mx-card-content">
+                <h3>Paid Members</h3>
+                <p><%= paidMembers %></p>
+            </div>
+        </div>
+
+        <div class="mx-card mx-new">
+            <div class="mx-card-icon"><i class="fa fa-user-plus"></i></div>
+            <div class="mx-card-content">
+                <h3>New Registrations </h3>
+                <p><%= newRegistrations %></p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- EXTRA DASHBOARD SECTION -->
+<div class="mx-extra-section">
+
+    <!-- CALENDAR -->
+    <div class="mx-extra-box">
+        <h3>📅 Today</h3>
+        <div class="mx-calendar">
+            <p class="mx-day"><%= new Date().toLocaleDateString('en-IN', { weekday: 'long' }) %></p>
+            <p class="mx-date"><%= new Date().toLocaleDateString('en-IN') %></p>
+        </div>
+    </div>
+
+    <!-- GENDER RATIO -->
+    <div class="mx-extra-box">
+        <h3>👫 Gender Ratio</h3>
+
+        <div class="mx-gender">
+            <div class="mx-gender-row">
+                <span>👨 Male</span>
+                <strong><%= maleUsers %></strong>
+            </div>
+
+            <div class="mx-gender-row">
+                <span>👩 Female</span>
+                <strong><%= femaleUsers %></strong>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Internal CSS -->
+<style>
+.mx-dashboard {
+    font-family: 'Poppins', sans-serif;
+    padding: 40px 20px;
+    background: #fdf6f6;
+}
+
+.mx-title {
+    text-align: center;
+    font-size: 32px;
+    color: #d6336c;
+    margin-bottom: 40px;
+}
+
+.mx-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.mx-card {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mx-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.12);
+}
+
+.mx-card-icon {
+    font-size: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.mx-card-content h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: #333;
+}
+
+.mx-card-content p {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Individual card colors */
+.mx-total .mx-card-icon { background: #6c63ff; }
+.mx-pending .mx-card-icon { background: #f0ad4e; }
+.mx-approved .mx-card-icon { background: #28a745; }
+.mx-blocked .mx-card-icon { background: #dc3545; }
+.mx-paid .mx-card-icon { background: #17a2b8; }
+.mx-new .mx-card-icon { background: #ff69b4; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .mx-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .mx-cards {
+        grid-template-columns: 1fr;
+    }
+    .mx-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .mx-card-icon {
+        margin-bottom: 10px;
+    }
+}
+
+/* EXTRA SECTION */
+.mx-extra-section {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.mx-extra-box {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.mx-extra-box h3 {
+    margin-bottom: 20px;
+    color: #d6336c;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* CALENDAR */
+.mx-calendar {
+    text-align: center;
+    background: #fff0f6;
+    padding: 30px;
+    border-radius: 14px;
+}
+
+.mx-calendar .mx-day {
+    font-size: 22px;
+    font-weight: 600;
+    color: #c2255c;
+}
+
+.mx-calendar .mx-date {
+    font-size: 18px;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* GENDER RATIO */
+.mx-gender {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mx-gender-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.mx-gender-row strong {
+    color: #6c63ff;
+}
+
+</style>

@@ -1,0 +1,97 @@
+/* ==== MATRIMONY UNIQUE USER TABLE ==== */
+
+.mt-unique-body{
+    font-family:'Poppins',sans-serif;
+    background:#fff0f5;
+    margin:0;
+    padding:0;
+}
+
+.mt-unique-container{
+    max-width:1200px;
+    margin:50px auto;
+    padding:0 20px;
+}
+
+.mt-unique-heading{
+    text-align:center;
+    font-size:32px;
+    color:#d81b60;
+    font-weight:600;
+    margin-bottom:50px;
+}
+
+/* Card */
+.mt-unique-card{
+    background:#fff;
+    padding:25px;
+    border-radius:16px;
+    box-shadow:0 12px 28px rgba(216,27,96,0.12);
+    margin-bottom:40px;
+}
+
+.mt-unique-card h2{
+    font-size:20px;
+    color:#c2185b;
+    margin-bottom:20px;
+}
+
+/* Table */
+.mt-unique-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.mt-unique-table th{
+    background:#f8bbd0;
+    color:#880e4f;
+    font-weight:500;
+    font-size:14px;
+    padding:12px;
+    text-align:left;
+    border-radius:8px 8px 0 0;
+}
+
+.mt-unique-table td{
+    padding:12px;
+    border-bottom:1px solid #ffe6f0;
+    font-size:14px;
+    color:#444;
+}
+
+.mt-unique-table tr:hover{
+    background:#fff0f5;
+}
+
+/* Status badge */
+.mt-unique-badge{
+    padding:5px 14px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:500;
+}
+
+.mt-unique-pending{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.mt-unique-approved{
+    background:#fce4ec;
+    color:#c2185b;
+}
+
+/* View button */
+.mt-unique-btn{
+    padding:6px 16px;
+    border-radius:20px;
+    background:#d81b60;
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    transition:0.3s;
+}
+
+.mt-unique-btn:hover{
+    background:#c2185b;
+}

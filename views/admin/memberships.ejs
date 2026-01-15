@@ -1,0 +1,148 @@
+<%- include("navbar.ejs") %>
+
+<div class="admin-content">
+
+    <h2 class="mx-title">💰 Membership Requests</h2>
+
+    <div class="membership-table-container">
+        <table class="membership-table ">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Plan</th>
+                    <th>Payment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% memberships.forEach(m => { %>
+                <tr>
+                    <td><%= m.full_name %></td>
+                    <td><%= m.email %></td>
+                    <td><%= m.mobile %></td>
+                    <td><%= m.plan %></td>
+                    <td><%= m.payment_method %></td>
+                    
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- Internal CSS -->
+<style>
+/* Page */
+.admin-content {
+    font-family: 'Poppins', sans-serif;
+    padding: 35px 30px;
+    background: linear-gradient(135deg, #f9fafb, #f1f5f9);
+}
+
+/* Title */
+.mx-title {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #111827;
+    position: relative;
+}
+
+.mx-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #6366f1, #9333ea);
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
+
+/* Table Card */
+.membership-table-container {
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    overflow-x: auto;
+}
+
+/* Table */
+.membership-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Header */
+.membership-table thead {
+    
+    background:linear-gradient(135deg,#ec4899,#8b5cf6);
+
+}
+
+.membership-table th {
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.membership-table th:last-child {
+    border-right: none;
+}
+
+/* Body */
+.membership-table td {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: #111827;
+    text-align: center;
+    border-right: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.membership-table td:last-child {
+    border-right: none;
+}
+
+.membership-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Row Hover */
+.membership-table tbody tr:hover {
+    background: #f8fafc;
+    transform: scale(1.002);
+    transition: 0.2s ease;
+}
+
+/* Status (future use) */
+.membership-table .Pending {
+    color: #f59e0b;
+    font-weight: 700;
+}
+
+.membership-table .Approved {
+    color: #16a34a;
+    font-weight: 700;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .mx-title {
+        font-size: 22px;
+    }
+
+    .membership-table th,
+    .membership-table td {
+        padding: 10px;
+        font-size: 12px;
+    }
+}
+</style>

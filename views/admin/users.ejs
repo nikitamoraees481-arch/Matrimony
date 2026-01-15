@@ -1,0 +1,242 @@
+<%- include("navbar.ejs") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Users | Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+/* Page */
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#f8fafc,#eef2f7);
+}
+
+/* Header */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 32px;
+    background:#ffffff;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    margin-bottom:30px;
+    border-radius:0 0 14px 14px;
+}
+
+.header h2{
+    margin:0;
+    font-weight:600;
+    color:#111827;
+}
+
+.admin-info{
+    color:#6b7280;
+    font-size:14px;
+}
+
+/* Content */
+.admin-content{
+    padding:0 32px 50px;
+}
+
+/* Page Title */
+.page-title h1{
+    font-size:26px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:25px;
+    position:relative;
+}
+
+.page-title h1::after{
+    content:'';
+    width:90px;
+    height:4px;
+    background:linear-gradient(to right,#ec4899,#8b5cf6);
+    display:block;
+    margin:8px auto 0;
+    border-radius:6px;
+}
+
+/* Table Card */
+.table-card{
+    background:#ffffff;
+    border-radius:16px;
+    padding:22px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.10);
+    border:1px solid #e5e7eb;
+    overflow-x:auto;
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:950px;
+    border:1px solid #e5e7eb;
+}
+
+/* Table Head */
+thead{
+    background:linear-gradient(135deg,#ec4899,#8b5cf6);
+}
+
+thead th{
+    padding:16px 18px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:#ffffff;
+    border-right:1px solid rgba(255,255,255,0.25);
+}
+
+thead th:last-child{
+    border-right:none;
+}
+
+/* Table Body */
+tbody td{
+    padding:15px 18px;
+    font-size:14px;
+    color:#111827;
+    border-bottom:1px solid #e5e7eb;
+    border-right:1px solid #e5e7eb;
+}
+
+tbody td:last-child{
+    border-right:none;
+}
+
+tbody tr:last-child td{
+    border-bottom:none;
+}
+
+/* Hover */
+tbody tr{
+    transition:all 0.25s ease;
+}
+
+tbody tr:hover{
+    background:#fdf2f8;
+    box-shadow:inset 0 0 0 9999px rgba(236,72,153,0.04);
+}
+
+/* Status Badge */
+.status{
+    padding:6px 16px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:700;
+    display:inline-block;
+}
+
+.status.Pending{
+    background:#fef3c7;
+    color:#b45309;
+}
+
+.status.Approved{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.status.Blocked{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+/* Actions */
+.actions a{
+    margin-right:12px;
+    color:#ec4899;
+    font-size:17px;
+    transition:0.25s;
+}
+
+.actions a:hover{
+    color:#8b5cf6;
+    transform:scale(1.15);
+}
+
+/* Mobile */
+@media (max-width: 768px){
+    .page-title h1{
+        font-size:22px;
+    }
+
+    thead th,
+    tbody td{
+        padding:10px;
+        font-size:12px;
+    }
+}
+</style>
+
+
+</head>
+
+<body>
+
+<div class="header">
+    <h2>Admin Dashboard</h2>
+    <div class="admin-info">Welcome, Admin</div>
+</div>
+
+<div class="admin-content">
+
+    <div class="page-title" style="text-align:center">
+        <h1>Registered Users</h1>
+    </div>
+
+    <div class="table-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <% users.forEach(function(val, i) { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= val.full_name %></td>
+                    <td><%= val.gender %></td>
+                    <td><%= val.email %></td>
+                    <td><%= val.mobile %></td>
+                    <td>
+                        <span class="status <%= val.profile_status %>">
+                            <%= val.profile_status %>
+                        </span>
+                    </td>
+                    <td class="actions">
+                        <a href="/admin/view_user/<%= val.member_id %>" title="View User">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<%- include("navbar.ejs") %>
+
+<
+
+<div class="admin-content">
+
+    <h2>👤 User Profile Review</h2>
+
+    <form action="/admin/update_status/<%= user.member_id %>" method="post">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" value="<%= user.full_name %>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" value="<%= user.email %>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Mobile</label>
+                <input type="tel" value="<%= user.mobile %>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <input type="text" value="<%= user.gender %>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Religion / Caste</label>
+                <input type="text" value="<%= user.religion_caste %>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Mother Tongue</label>
+                <input type="text" value="<%= user.mother_tongue %>" readonly>
+            </div>
+
+        </div>
+
+        <div class="status-row">
+            <div class="form-group">
+                <label>Profile Status</label>
+                <select name="profile_status">
+                    <option value="Pending" <%= user.profile_status === 'Pending' ? 'selected' : '' %>>Pending</option>
+                    <option value="Approved" <%= user.profile_status === 'Approved' ? 'selected' : '' %>>Approved</option>
+                    <option value="Blocked" <%= user.profile_status === 'Blocked' ? 'selected' : '' %>>Blocked</option>
+                </select>
+            </div>
+
+            <button type="submit" class="action-btn">Update Status</button>
+        </div>
+
+    </form>
+
+</div>
